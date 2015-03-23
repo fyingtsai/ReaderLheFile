@@ -44,7 +44,6 @@ def getLheList():
 	    	    			s.mh_2 = getmh_2Value(lheFile)
 	    	    		elif lheFile.find(str_Mh) > 0:
 	    	    			s.mh = getMhValue(lheFile)
-	    	    		# s.tanBeta = int(mh)/int(mh_2)
 	    	    		elif lheFile.find(str_weight) > 0:
 						weightValue = lheFile.split(' : ')[1]
 						s.weight = weightValue
