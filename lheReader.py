@@ -1,6 +1,4 @@
 # Author: Kelly Tsai
-
-import sys
 import glob
 import errno
 from ROOT import TGraph, TFile, TCanvas
