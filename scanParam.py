@@ -1,4 +1,8 @@
-# Author: Kelly Tsai
+#! /usr/bin/env python
+#-------------------------------------------------------------
+# File: scanParam.py
+# Created: 12 July 2016 Fang-Ying Tsai
+#-------------------------------------------------------------  
 
 import sys
 import os
@@ -6,12 +10,7 @@ import glob
 import fileinput
 import subprocess
 
-str_mzp = 'mzp'
-str_pidzp = '32'
-str_ma0 = 'ma0'
-str_pida0 = '28'
-str_mdm = 'mx'
-str_pidx = '1000022'
+
 fileName = 'param_card.dat'
 paramCard = glob.glob(fileName)
 
@@ -30,13 +29,13 @@ class cd:
 
 def replaceMZp(searchExp,replaceExp):
     for line in fileinput.input(fileName, inplace=1):
-    	if line.lower().find(str_mzp)>0 and line.find(str_pidzp)>0:
+    	if line.lower().find('mzp')>0 and line.find('32')>0:
             line = line.replace(searchExp,replaceExp)
         sys.stdout.write(line)
 
 def replaceMA0(searchExp,replaceExp):
     for line in fileinput.input(fileName, inplace=1):
-    	if line.lower().find(str_ma0)>0 and line.find(str_pida0)>0:
+    	if line.lower().find('ma0')>0 and line.find('28')>0:
             line = line.replace(searchExp,replaceExp)
  	if line.lower().find("mh__2")>0 and line.find("26")>0:
 	    line = line.replace(searchExp,replaceExp)
@@ -46,7 +45,7 @@ def replaceMA0(searchExp,replaceExp):
 
 def replaceMDM(searchExp,replaceExp):
     for line in fileinput.input(fileName, inplace=1):
-    	if line.lower().find(str_mdm)>0 and line.find(str_pidx)>0:
+    	if line.lower().find('mx')>0 and line.find('1000022')>0:
             line = line.replace(searchExp,replaceExp)
         sys.stdout.write(line)
 
@@ -98,280 +97,7 @@ def main():
     replaceMA0("5.000000e+02","6.000000e+02")
     with cd(".."):
         generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("6.000000e+02","8.000000e+02")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("8.000000e+02","1.000000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("1.000000e+03","1.200000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("1.200000e+03","1.400000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("1.400000e+03","1.700000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("1.700000e+03","2.000000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMZp("2.000000e+03","2.500000e+03")
-    replaceMA0("8.000000e+02","3.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("6.000000e+02","7.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("7.000000e+02","8.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
+
 
 if __name__ == "__main__":
    main()
