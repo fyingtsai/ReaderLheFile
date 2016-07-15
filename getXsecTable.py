@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 #-------------------------------------------------------------
-# File: scanParam.py
+# File: getXsecTable.py
 # Created: 15 July 2016 Fang-Ying Tsai
 #-------------------------------------------------------------  
 import glob
