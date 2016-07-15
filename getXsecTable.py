@@ -1,4 +1,8 @@
-# Author: Kelly Tsai
+#! /usr/bin/env python
+#-------------------------------------------------------------
+# File: scanParam.py
+# Created: 15 July 2016 Fang-Ying Tsai
+#-------------------------------------------------------------  
 import glob
 import errno
 from ROOT import TGraph, TFile, TCanvas, TH2F, gStyle
@@ -16,12 +20,6 @@ class GetValue():
 
 hAList = []
 hzList = []
-str_weight = 'Integrated weight'
-str_tanBeta = 'tb'
-str_tanBeta2 = '#'
-str_MZp = 'mzp'
-str_ma0 = 'ma0'
-str_mdm = 'mx'
 hApath = 'file_*.txt'  
 hA_files = glob.glob(hApath) 
 
@@ -58,15 +56,15 @@ def gethAList(lhefile):
 	    	try:
 	    	    with open(name) as f: 
 	    	    	for lheFile in f:
-	    	    		if lheFile.find(str_MZp) > 0:
+	    	    		if lheFile.find('mzp') > 0:
 	    	    			s.zpMass = getMZpValue(lheFile)
-	    	    		elif lheFile.find(str_ma0) > 0:
+	    	    		elif lheFile.find('ma0') > 0:
 	    	    			s.ma0Mass = getMA0Value(lheFile)
-	    	    		elif lheFile.find(str_mdm) > 0:
+	    	    		elif lheFile.find('mx') > 0:
 	    	    			s.mdmMass = getMDMValue(lheFile)
-	    	    		elif lheFile.find(str_weight) > 0:
+	    	    		elif lheFile.find('Integrated weight') > 0:
 	    	    			s.weight = getWeightValue(lheFile)
-	    	    		elif lheFile.find(str_tanBeta) > 0 and lheFile.find(str_tanBeta2) > 0:
+	    	    		elif lheFile.find('tb') > 0 and lheFile.find('#') > 0:
 	    	    			s.tanbeta = getTanBeta(lheFile)
 					hAList.append(s)
 	    	except IOError as exc:
@@ -87,8 +85,7 @@ def main():
 	histo_hA0.SetStats(0)
 
 	for a in hAList:
-		histo_hA0.Fill(a.zpMass,a.ma0Mass, (a.weight)*1000)
-		# print 'AMass:',a.ma0Mass,' ZpMass:',a.zpMass, 'xsec:',(a.weight)*1000
+		histo_hA0.Fill(a.zpMass,a.ma0Mass,a.weight)
 	gStyle.SetPalette(1)
 
 	f.Write()
