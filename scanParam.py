@@ -51,6 +51,7 @@ def replaceMDM(searchExp,replaceExp):
 
 
 def getA0AutoWidth():
+    for line in fileinput.input(paramCard, inplace=1):
         if line.find("ECAY  28")>0:
             A0Width = line.split("28 ")[1].split(" #")[0]
             line = line.replace(A0Width,"Auto")
