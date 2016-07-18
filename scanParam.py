@@ -77,27 +77,16 @@ def generateEvent():
     return s.returncode
 
 def main():
-    replaceMZp("1.000000e+03","6.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("3.000000e+02","4.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("4.000000e+02","5.000000e+02")
-    with cd(".."):
-        generateEvent()
-    getZpAutoWidth()
-    getA0AutoWidth()
-    gethAutoWidth()
-    replaceMA0("5.000000e+02","6.000000e+02")
-    with cd(".."):
-        generateEvent()
+    MzpList=["1.000000e+03","6.000000e+02","8.000000e+02","1.000000e+03","1.200000e+03","1.400000e+03","1.700000e+03","2.000000e+03","2.500000e+03"]
+    MA0List=["3.000000e+02","4.000000e+02","5.000000e+02","6.000000e+02","7.000000e+02","8.000000e+02","3.000000e+02"]
+    for i in range(8):
+        replaceMZp(MzpList[i],MzpList[i+1])
+        for j in range(6):
+            getZpAutoWidth()
+            getA0AutoWidth()
+            replaceMA0(MA0List[j],MA0List[j+1]) 
+            with cd(".."):
+                generateEvent()  
 
 
 if __name__ == "__main__":
