@@ -20,7 +20,7 @@ class GetValue():
 
 hAList = []
 hzList = []
-hApath = 'file_*.txt'  
+hApath = 'run_*.txt'  
 hA_files = glob.glob(hApath) 
 
 def getFile(fileName):
