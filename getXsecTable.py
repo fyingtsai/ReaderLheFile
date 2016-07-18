@@ -19,7 +19,6 @@ class GetValue():
     	self.tanbeta = []
 
 hAList = []
-hzList = []
 hApath = 'run_*.txt'  
 hA_files = glob.glob(hApath) 
 
